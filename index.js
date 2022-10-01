@@ -65,6 +65,13 @@ io.on("connection", (socket) => {
     io.to(data.roomId).emit('receive', {text: data.text, roomId: data.roomId, userId: data.userId});
   });
 
+  socket.on('loadingNotification', (data) =>{
+    io.to(data.roomId).emit("getLoadingNotification", { 
+      roomId: 123, 
+      userId: socket.id
+    });
+  })
+
   socket.on('uploadImage', async(base64, imageObject, callback) => {
     callback({
       status: "ok",
@@ -72,7 +79,7 @@ io.on("connection", (socket) => {
     });
     io.to(imageObject.roomId).emit("getImageNotification", {
       imageNotification: "Image is received in Server...",
-  });
+    });
     io.to(imageObject.roomId).emit("getImage", {
         base64: base64,
         roomId: imageObject.roomId,
