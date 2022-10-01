@@ -43,6 +43,8 @@ const express = require("express");
 const { createServer } = require("http");
 const { Server } = require("socket.io");
 
+const PORT = process.env.PORT || 8000;
+
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
@@ -83,6 +85,6 @@ app.get("/", (req, res) =>{
   res.json("This is Node Js Backend")
 })
 
-httpServer.listen(5000, () =>{
+httpServer.listen(PORT, () =>{
   console.log("Server running on PORT 5000...")
 });
