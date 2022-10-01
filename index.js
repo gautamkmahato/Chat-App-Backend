@@ -51,7 +51,7 @@ const io = new Server(httpServer, {
   maxHttpBufferSize: 1e8,
   pingTimeout: 3000000,
   cors: {
-    origin: "http://localhost:3000"
+    origin: "https://chat-app-fontend.onrender.com"
   }
 });
 
